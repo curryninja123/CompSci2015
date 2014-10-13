@@ -1,5 +1,13 @@
 button.button1{
-background.color:#00de00;
-color:#ededed;
-font-family: "Open Sans";
+  background.color:#00de00;
+  color:#ededed;
+  width:100px;
+  height:;
+  font-family: "Helvetica";
+  font-size:16px;
+}
+
+div.div1{
+  font-family:"Helvetica";
+  font-size:14px;
 }
