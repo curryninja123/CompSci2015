@@ -1,0 +1,9 @@
+extends ../layout
+block content
+    h1 Log In
+    form(id="login" method="post" action="/users/session/new")
+        label(for="email") Email
+        input.txt(type="text" id="email" name="email")
+        label(for="password") Password
+        input.txt(type="password" id="password" name="password")
+        input(type="submit" value="Submit")

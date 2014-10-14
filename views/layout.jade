@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    #nav
+        ul
+            li
+                a(href="/users/login") Login
+            li
+                a(href="#") Info
+            li
+                a(href="#") Sign Up
+    for message in error_messages
+        p.flash.error= message
+    for message in success_messages
+        p.flash.success= message
+    block content
