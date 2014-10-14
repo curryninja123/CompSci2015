@@ -1,13 +1,27 @@
 button.button1{
-  background.color:#00de00;
-  color:#ededed;
-  width:100px;
-  height:;
-  font-family: "Helvetica";
-  font-size:16px;
+  background-color: #cccccc;
+  color:#0000ff;
+  width:120px;
+  height: 60px;
+  font-family: "Consolas";
+  font-size:18px;
+  font-weight:bold;
+  border-width: 5px;
+  border-color: #00dd00;
 }
 
-div.div1{
+head{
   font-family:"Helvetica";
-  font-size:14px;
+  font-size:28px;
+  border-left-color: #ffaa00;
+  border-top-color: #00ff00;
+  border-right-color: #ffff00;
+  border-bottom-color: #0000bb;
+  border-width: 10px;
+  width: 600px;
+  height: 600px;
+}	
+
+html{
+	background-image: url("background1.jpg");
 }
