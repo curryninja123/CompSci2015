@@ -28,13 +28,15 @@ html
                         a(href="/logic/admin") Admin Panel
                 else
                     li
-                        a(href="/logic/general/edituser") Edit Team Member Names
+                        a(href="/logic/general/edituser") Edit Member Names
+                    li
+                        a(href="/logic/general/written") View Written Scores
                 li
                     a(href="/users/logout") Log Out
             li
                 a(href="/info") Info
             li
-                a(href="#") Sign Up
+                a(href="/downloads") Downloads
     for message in error_messages
         p.flash.error= message
     for message in success_messages

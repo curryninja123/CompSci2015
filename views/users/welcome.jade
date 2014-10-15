@@ -1,5 +1,12 @@
 extends ../layout
 block content
-    h1 User Welcome Page
-    p Your email is #{user.email}
-    p Your name is #{user.firstname} #{user.lastname}
+    h1 Welcome Page
+    if !isAdmin
+        if user.email <= 'team40'
+            - intro = 'NOVICE TEAM NUMBER'
+        else
+            - intro = 'ADVANCED TEAM NUMBER'
+    else
+        - intro = 'ADMIN'
+
+    h3 #{intro} #{user.email.substring(4)}

@@ -84,6 +84,12 @@ router.post('/general/updateuser', userz.verify, function(req, res) {
 	res.redirect('/users/welcome');
 });
 
+router.get('/general/written', userz.verify, function(req, res) {
+	userz.User.findById(req.session.user._id, function(err, user) {
+		res.render('logic/generalwrittenscores', {'user': user});
+	});
+});
+
 router.get('/admin/removeuser/:uid', userz.verifyAdmin, function(req, res) {
 	userz.User.findById(req.params.uid).remove(function(err) {});
 	req.flash("success", "Removed User");

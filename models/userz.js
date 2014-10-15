@@ -33,9 +33,9 @@ var userSchema = new Schema({
 	hash: String,
 	salt: String,
 	isAdmin: {type: Boolean, default: false},
-	member1: { name: String, cid: Number },
-	member2: { name: String, cid: Number },
-	member3: { name: String, cid: Number }
+	member1: { name: String, cid: Number, written: {type: Number, default: 0} },
+	member2: { name: String, cid: Number, written: {type: Number, default: 0} },
+	member3: { name: String, cid: Number, written: {type: Number, default: 0} }
 });
 
 var settingSchema = new Schema({
