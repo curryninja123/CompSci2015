@@ -46,7 +46,14 @@ router.post('/admin/updateuser/:uid', userz.verifyAdmin, function(req, res) {
 		if (req.body.member2)
 			user.member2.name = req.body.member2;
 		if (req.body.member3)
-			user.member2.name = req.body.member3;
+			user.member3.name = req.body.member3;
+
+		if (req.body.wmember1)
+			user.member1.written = parseInt(req.body.wmember1);
+		if (req.body.wmember2)
+			user.member2.written = parseInt(req.body.wmember2);
+		if (req.body.wmember3)
+			user.member3.written = parseInt(req.body.wmember3);
 
 		if (req.body.password)
 			userz.pbd(req.body.password, user.salt, 10000, function(result) {
@@ -59,7 +66,7 @@ router.post('/admin/updateuser/:uid', userz.verifyAdmin, function(req, res) {
 			user.save(function(err) {console.log(err);});
 	});
 	req.flash('success', 'Updated User');
-	res.redirect('/logic/admin');
+	res.redirect('/logic/admin/viewusers');
 });
 
 router.get('/general/edituser', userz.verify, function(req, res) {
@@ -78,10 +85,17 @@ router.post('/general/updateuser', userz.verify, function(req, res) {
 			user.member2.name = req.body.member2;
 		if (req.body.member3)
 			user.member3.name = req.body.member3;
+
 		user.save(function(err) {console.log(err);});
 	});
 	req.flash('success', 'Updated User');
 	res.redirect('/users/welcome');
+});
+
+router.get('/general/written', userz.verify, function(req, res) {
+	userz.User.findById(req.session.user._id, function(err, user) {
+		res.render('logic/generalwrittenscores', {'user': user});
+	});
 });
 
 router.get('/admin/removeuser/:uid', userz.verifyAdmin, function(req, res) {

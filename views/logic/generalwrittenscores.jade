@@ -1,0 +1,18 @@
+extends ../layout
+block content
+    h1 Written Scores
+    table.pure-table
+        thead
+            tr
+                th Name
+                th Score
+        tbody
+            tr
+                td= user.member1.name
+                td= user.member1.written
+            tr
+                td= user.member2.name
+                td= user.member2.written
+            tr
+                td= user.member3.name
+                td= user.member3.written
