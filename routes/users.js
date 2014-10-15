@@ -35,7 +35,7 @@ router.get('/this', function(req, res) {
 			res.send("PBD" + result);
 		});
 	}
-	// password: whichaneesh
+	
 	// salt: cOetkE8+k4svlnCEQxvVtUxKV/a28YTmK4/fqJQWyYM=
 	// hash: EwUe7ZLx7y02nTakvca8FhbcSekrSAE6ms2SSKwjLcFzD4Dwy2yRUQn8pMOdQVX1
 });

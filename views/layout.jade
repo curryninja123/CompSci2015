@@ -6,10 +6,20 @@ html
   body
     #nav
         ul
+            if !loggedIn
+                li
+                    a(href="/users/login") Log In
+            else
+                if isAdmin
+                    li
+                        a(href="/logic/admin") Admin Panel
+                else
+                    li
+                        a(href="/logic/general/edituser") Edit Team Member Names
+                li
+                    a(href="/users/logout") Log Out
             li
-                a(href="/users/login") Login
-            li
-                a(href="#") Info
+                a(href="/info") Info
             li
                 a(href="#") Sign Up
     for message in error_messages

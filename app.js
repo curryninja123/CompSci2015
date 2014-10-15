@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
+var logic = require('./routes/logic');
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use(userz.loginvar());
 // controller setup
 app.use('/', routes);
 app.use('/users', users);
+app.use('/logic', logic);
 
 /// catch 404 and forward to error handler
 app.use(function(req, res, next) {

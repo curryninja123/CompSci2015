@@ -32,12 +32,37 @@ var userSchema = new Schema({
 	email: {type: String, unique: true},
 	hash: String,
 	salt: String,
-	isAdmin: {type: Boolean, default: false}
+	isAdmin: {type: Boolean, default: false},
+	member1: { name: String, cid: Number },
+	member2: { name: String, cid: Number },
+	member3: { name: String, cid: Number }
 });
+
+var settingSchema = new Schema({
+	xid: {type: Number, default: 75, unique: true}, 
+	totalmembers: {type: Number, default: 0},
+});
+
+var Setting = mongoose.model('Setting', settingSchema);
+
+Setting.where({xid: 75}).count(function(err, results) {
+	if (results == 0) {
+		var sets = Setting({totalmembers: 0});
+		sets.save(function(err) {
+			console.log(err);
+		});
+	}
+});
+
+
+
+
 
 var User = mongoose.model('User', userSchema);
 
 exports.User = User
+
+exports.pbd = pbd;
 
 exports.createUser = function(firstname, lastname, email, password, callback) {
 	var salt = genSalt().toString(CryptoJS.enc.Base64);

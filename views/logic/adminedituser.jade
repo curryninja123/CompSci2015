@@ -1,0 +1,16 @@
+extends ../layout
+block content
+    h1 Edit User
+    //- h1= u
+    form(id="login" method="post" action="/logic/admin/updateuser/" + u.id)
+        label(for="email") Email
+        input.txt(type="text" id="email" name="email" value=u.email)
+        label(for="member1") Member 1
+        input.txt(type="text" id="member1" name="member1" value=u.member1.name)  
+        label(for="member2") Member 2
+        input.txt(type="text" id="member2" name="member2" value=u.member2.name)  
+        label(for="member3") Member 3
+        input.txt(type="text" id="member3" name="member3" value=u.member3.name)
+        label(for="password") Password
+        input.txt(type="password" id="password" name="password")
+        input(type="submit" value="Submit")
