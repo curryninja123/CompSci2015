@@ -1,22 +1,23 @@
 extends ../layout
 block content
-    table
-        tr
-            th Email
-            th Member 1
-            th Member 2
-            th Member 3
-            th __
-            td __
-        
-        for u in users
+    table.pure-table.pure-table-striped
+        thead
             tr
-                td= u.email
-                td= u.member1.name
-                td= u.member2.name
-                td= u.member3.name
-                td
-                    a(href="/logic/admin/edituser/" + u.id) Edit
-                td
-                    a(href="/logic/admin/removeuser/" + u.id) Remove
+                th Team
+                th Member 1
+                th Member 2
+                th Member 3
+                th Editing
+                th Removing
+        tbody
+            for u in users
+                tr
+                    td= u.email
+                    td= u.member1.name
+                    td= u.member2.name
+                    td= u.member3.name
+                    td
+                        a(href="/logic/admin/edituser/" + u.id) Edit
+                    td
+                        a(href="/logic/admin/removeuser/" + u.id) Remove
 

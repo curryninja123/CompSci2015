@@ -20,7 +20,8 @@ router.post('/admin/newuser', userz.verifyAdmin, function(req, res) {
 });
 
 router.get('/admin/viewusers', userz.verifyAdmin, function(req, res) {
-	userz.User.find({isAdmin: false}, function(err, users) {
+	userz.User.find({isAdmin: false}).sort({email: 1}).
+					exec(function(err, users) {
 		res.render('logic/adminviewusers', {'title': 'View Users', 'users': users})
 	});
 });
