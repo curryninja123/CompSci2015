@@ -3,7 +3,7 @@ block content
     h1 Edit User
     h3= user.email
 
-    form(id="login" method="post" action="/logic/general/updateuser")
+    form.pure-form.pure-form-stacked(id="login" method="post" action="/logic/general/updateuser")
         h1 Enter First and Last Names for Each Member
         label(for="member1") Member 1
         input.txt(type="text" id="member1" name="member1" value=user.member1.name)  
@@ -11,4 +11,4 @@ block content
         input.txt(type="text" id="member2" name="member2" value=user.member2.name)  
         label(for="member3") Member 3
         input.txt(type="text" id="member3" name="member3" value=user.member3.name)
-        input.btn(type="submit" value="Submit")
+        button.btn.pure-button.pure-button-primary(type="submit") Submit

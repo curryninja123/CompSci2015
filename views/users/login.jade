@@ -1,9 +1,9 @@
 extends ../layout
 block content
     h1 Log In
-    form(id="login" method="post" action="/users/session/new")
+    form.pure-form.pure-form-stacked(id="login" method="post" action="/users/session/new")
         label(for="email") Team
         input.txt(type="text" id="email" name="email")
         label(for="password") Password
         input.txt(type="password" id="password" name="password")
-        input.btn(type="submit" value="Submit")
+        button.btn.pure-button.pure-button-primary(type="submit") Submit

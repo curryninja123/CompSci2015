@@ -98,6 +98,66 @@ router.get('/general/written', userz.verify, function(req, res) {
 	});
 });
 
+function memberCompare(a,b) {
+  if (a.written < b.written)
+     return 1;
+  if (a.written > b.written)
+    return -1;
+  return 0;
+}
+
+router.get('/admin/viewnovicescores', userz.verifyAdmin, function(req, res) {
+	userz.User.find({isAdmin: false}).where('email').lte('team40').exec(function(err, userlist) {
+		var members = [];
+		for (var x = 0; x < userlist.length; x++) {
+			if (userlist[x].member1.name) {
+				members[members.length] = userlist[x].member1;
+				members[members.length - 1].team = userlist[x].email;
+			}
+			if (userlist[x].member2.name) {
+				members[members.length] = userlist[x].member2;
+				members[members.length - 1].team = userlist[x].email;
+			}
+			if (userlist[x].member3.name) {
+				members[members.length] = userlist[x].member3;
+				members[members.length - 1].team = userlist[x].email;
+			}
+		}
+		members.sort(memberCompare);
+		console.log(members);
+		res.render('logic/adminnovicescoreboard', {
+			title: 'Written Scores | Novice',
+			members: members
+		});
+	});
+});
+
+router.get('/admin/viewadvancedscores', userz.verifyAdmin, function(req, res) {
+	userz.User.find({isAdmin: false}).where('email').gte('team41').exec(function(err, userlist) {
+		var members = [];
+		for (var x = 0; x < userlist.length; x++) {
+			if (userlist[x].member1.name) {
+				members[members.length] = userlist[x].member1;
+				members[members.length - 1].team = userlist[x].email;
+			}
+			if (userlist[x].member2.name) {
+				members[members.length] = userlist[x].member2;
+				members[members.length - 1].team = userlist[x].email;
+			}
+			if (userlist[x].member3.name) {
+				members[members.length] = userlist[x].member3;
+				members[members.length - 1].team = userlist[x].email;
+			}
+		}
+		members.sort(memberCompare);
+		console.log(members);
+		res.render('logic/adminnovicescoreboard', {
+			title: 'Written Scores | Advanced',
+			members: members
+		});
+	});
+});
+
 router.get('/admin/removeuser/:uid', userz.verifyAdmin, function(req, res) {
 	userz.User.findById(req.params.uid).remove(function(err) {});
 	req.flash("success", "Removed User");

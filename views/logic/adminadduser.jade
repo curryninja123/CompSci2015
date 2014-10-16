@@ -1,9 +1,9 @@
 extends ../layout
 block content
     h1 Admin Add User
-    form(id="login" method="post" action="/logic/admin/newuser")
-        label(for="email") Email
+    form.pure-form.pure-form-stacked(id="login" method="post" action="/logic/admin/newuser")
+        label(for="email") Team
         input.txt(type="text" id="email" name="email")
         label(for="password") Password
         input.txt(type="password" id="password" name="password")
-        input.btn(type="submit" value="Submit")
+        button.btn.pure-button.pure-button-primary(type="submit") Submit

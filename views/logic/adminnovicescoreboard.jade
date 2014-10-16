@@ -1,0 +1,15 @@
+extends ../layout
+block content
+	h1 Written Scoreboard
+	table.pure-table.pure-table-striped
+		thead
+			tr
+				th Team
+				th Name
+				th Score
+		tbody
+			for member in members
+				tr
+					td #{member.team.substring(4)}
+					td= member.name
+					td= member.written

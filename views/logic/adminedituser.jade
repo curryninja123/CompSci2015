@@ -2,7 +2,7 @@ extends ../layout
 block content
     h1 Edit User
     //- h1= u
-    form(id="login" method="post" action="/logic/admin/updateuser/" + u.id)
+    form.pure-form.pure-form-stacked(id="login" method="post" action="/logic/admin/updateuser/" + u.id)
         label(for="email") Email
         input.txt(type="text" id="email" name="email" value=u.email)
         label(for="member1") Member 1
@@ -22,4 +22,4 @@ block content
             
         label(for="password") Password
         input.txt(type="password" id="password" name="password")
-        input.btn(type="submit" value="Submit")
+        button.btn.pure-button.pure-button-primary(type="submit") Submit
