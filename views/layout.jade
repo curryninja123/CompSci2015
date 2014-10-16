@@ -19,6 +19,12 @@ html
   body
     nav
         ul
+            li
+                a(href="/") Home
+            //- li
+            //-     a(href="/info") Info
+            li
+                a(href="/downloads") Downloads
             if !loggedIn
                 li
                     a(href="/users/login") Log In
@@ -33,10 +39,6 @@ html
                         a(href="/logic/general/written") View Written Scores
                 li
                     a(href="/users/logout") Log Out
-            li
-                a(href="/info") Info
-            li
-                a(href="/downloads") Downloads
     for message in error_messages
         p.flash.error= message
     for message in success_messages

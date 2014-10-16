@@ -19,17 +19,25 @@ router.post('/admin/newuser', userz.verifyAdmin, function(req, res) {
 	res.redirect('/logic/admin');
 });
 
+function compareTeams(a, b) {
+	if (a.email.length < b.email.length) return -1;
+	if (a.email.length > b.email.length) return 1;
+	if (a.email < b.email) return -1;
+	if (a.email > b.email) return 1;
+	return 0;
+}
+
 router.get('/admin/viewusers', userz.verifyAdmin, function(req, res) {
-	userz.User.find({isAdmin: false}).sort({email: 1}).
+	userz.User.find({isAdmin: false}).
 					exec(function(err, users) {
-		res.render('logic/adminviewusers', {'title': 'View Users', 'users': users})
+		res.render('logic/adminviewusers', {'title': 'View Users', 'users': users.sort(compareTeams)})
 	});
 });
 
 router.get('/admin/edituser/:uid', userz.verifyAdmin, function(req, res) {
-	console.log(req.params.uid);
+	// console.log(req.params.uid);
 	userz.User.findById(req.params.uid, function(err, user) {
-		console.log(user);
+		// console.log(user);
 		res.render('logic/adminedituser', {'title': 'Edit User', 'u': user});
 	});
 	// userz.User.where({id: req.params.uid}).find(function(err, user) {
@@ -59,11 +67,11 @@ router.post('/admin/updateuser/:uid', userz.verifyAdmin, function(req, res) {
 			userz.pbd(req.body.password, user.salt, 10000, function(result) {
 				user.hash = result;
 				user.save(function(err) {
-					if (err) { console.log("Error in saving user"); }
+					if (err) { console.log("Error in saving user (1)"); }
 				});
 			});
 		else
-			user.save(function(err) {console.log(err);});
+			user.save(function(err) {console.log("Error in Saving User (2)");});
 	});
 	req.flash('success', 'Updated User');
 	res.redirect('/logic/admin/viewusers');
@@ -86,7 +94,7 @@ router.post('/general/updateuser', userz.verify, function(req, res) {
 		if (req.body.member3)
 			user.member3.name = req.body.member3;
 
-		user.save(function(err) {console.log(err);});
+		user.save(function(err) {console.log("Error when updating user: \n" + err.toString());});
 	});
 	req.flash('success', 'Updated User');
 	res.redirect('/users/welcome');
@@ -124,7 +132,7 @@ router.get('/admin/viewnovicescores', userz.verifyAdmin, function(req, res) {
 			}
 		}
 		members.sort(memberCompare);
-		console.log(members);
+
 		res.render('logic/adminnovicescoreboard', {
 			title: 'Written Scores | Novice',
 			members: members
@@ -150,7 +158,7 @@ router.get('/admin/viewadvancedscores', userz.verifyAdmin, function(req, res) {
 			}
 		}
 		members.sort(memberCompare);
-		console.log(members);
+	
 		res.render('logic/adminnovicescoreboard', {
 			title: 'Written Scores | Advanced',
 			members: members

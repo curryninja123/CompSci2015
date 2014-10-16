@@ -76,6 +76,17 @@ if (app.get('env') === 'development') {
     });
 }
 
+if (app.get('env') == 'production') {
+    // Production Error Handler
+    app.use(function(err, req, res, next) {
+        res.status(err.status || 500);
+        res.render('error', {
+            message: err.message,
+            error: {}
+        });
+    });
+}
+
 var mongoose = require( 'mongoose' );
 var dbURI = settings.dbURI;
 mongoose.connect(dbURI);
@@ -87,17 +98,17 @@ mongoose.connection.on('error',function (err) {
 });
 
 
-app.listen(settings.port);
+app.listen(settings.port, settings.host);
 
 // production error handler
 // no stacktraces leaked to user
-app.use(function(err, req, res, next) {
-    res.status(err.status || 500);
-    res.render('error', {
-        message: err.message,
-        error: {}
-    });
-});
+// app.use(function(err, req, res, next) {
+//     res.status(err.status || 500);
+//     res.render('error', {
+//         message: err.message,
+//         error: {}
+//     });
+// });
 
 
 module.exports = app;
