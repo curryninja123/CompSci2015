@@ -11,7 +11,7 @@ router.get('/info', function(req, res) {
 });
 
 router.get('/downloads', function(req, res) {
-  res.render('downloads', { title: 'Express' });
+  res.render('downloads', { title: 'Express', pc2loc: '#'});
 });
 
 module.exports = router;
