@@ -9,6 +9,7 @@ block content
                 th Member 1
                 th Member 2
                 th Member 3
+                th Total Written
                 th Editing
                 th Removing
         tbody
@@ -19,6 +20,7 @@ block content
                     td= u.member1.name
                     td= u.member2.name
                     td= u.member3.name
+                    td #{u.member1.written + u.member2.written + u.member3.written}
                     td
                         a(href="/logic/admin/edituser/" + u.id) Edit
                     td
