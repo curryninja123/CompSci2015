@@ -1,4 +1,6 @@
 extends layout
 block content
 	h1 Downloads
-	a.pure-button(href=pc2loc) Download PC^2
+	a.pure-button(href=pc2loc style="margin-right: 20px") Download PC^2
+	if studentdataloc
+		a.pure-button(href=studentdataloc style="margin-right: 20px") Download Student Data
