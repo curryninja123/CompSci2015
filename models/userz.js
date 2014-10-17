@@ -33,6 +33,7 @@ var userSchema = new Schema({
 	hash: String,
 	salt: String,
 	isAdmin: {type: Boolean, default: false},
+	school: {type: String, default: ""},
 	member1: { name: String, cid: Number, written: {type: Number, default: 0} },
 	member2: { name: String, cid: Number, written: {type: Number, default: 0} },
 	member3: { name: String, cid: Number, written: {type: Number, default: 0} }

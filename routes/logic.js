@@ -56,6 +56,9 @@ router.post('/admin/updateuser/:uid', userz.verifyAdmin, function(req, res) {
 		if (req.body.member3)
 			user.member3.name = req.body.member3;
 
+		if (req.body.school)
+			user.school = req.body.school;
+
 		if (req.body.wmember1)
 			user.member1.written = parseInt(req.body.wmember1);
 		if (req.body.wmember2)
@@ -94,7 +97,10 @@ router.post('/general/updateuser', userz.verify, function(req, res) {
 		if (req.body.member3)
 			user.member3.name = req.body.member3;
 
-		user.save(function(err) {console.log("Error when updating user: \n" + err.toString());});
+		if (req.body.school)
+			user.school = req.body.school;
+
+		user.save(function(err) {if (err) console.log(err);});
 	});
 	req.flash('success', 'Updated User');
 	res.redirect('/users/welcome');

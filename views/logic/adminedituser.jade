@@ -5,6 +5,8 @@ block content
     form.pure-form.pure-form-stacked(id="login" method="post" action="/logic/admin/updateuser/" + u.id)
         label(for="email") Email
         input.txt(type="text" id="email" name="email" value=u.email)
+        label(for="school") School
+        input.txt(type="text" id="school" name="school" value=u.school)
         label(for="member1") Member 1
         input.txt(type="text" id="member1" name="member1" value=u.member1.name)  
         label(for="member2") Member 2

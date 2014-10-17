@@ -1,14 +1,15 @@
 extends ../layout
 block content
-    h1 Edit User
-    h3= user.email
+    h1 Edit Team #{user.email.substring(4)}
 
     form.pure-form.pure-form-stacked(id="login" method="post" action="/logic/general/updateuser")
-        h1 Enter First and Last Names for Each Member
-        label(for="member1") Member 1
+        h2 Enter First and Last Names for Each Member
+        label(for="school") School Name (don't include "High School")
+        input.txt(type="text" id="school" name="school" value=user.school)
+        label(for="member1") Member 1 Name (Firstname Lastname)
         input.txt(type="text" id="member1" name="member1" value=user.member1.name)  
-        label(for="member2") Member 2
+        label(for="member2") Member 2 Name
         input.txt(type="text" id="member2" name="member2" value=user.member2.name)  
-        label(for="member3") Member 3
+        label(for="member3") Member 3 Name
         input.txt(type="text" id="member3" name="member3" value=user.member3.name)
         button.btn.pure-button.pure-button-primary(type="submit") Submit
