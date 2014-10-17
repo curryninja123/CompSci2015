@@ -5,6 +5,7 @@ block content
         thead
             tr
                 th Team
+                th School
                 th Member 1
                 th Member 2
                 th Member 3
@@ -14,6 +15,7 @@ block content
             for u in users
                 tr
                     td= u.email
+                    td= u.school
                     td= u.member1.name
                     td= u.member2.name
                     td= u.member3.name

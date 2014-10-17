@@ -5,11 +5,13 @@ block content
 		thead
 			tr
 				th Team
+				th School
 				th Name
 				th Score
 		tbody
 			for member in members
 				tr
 					td #{member.team.substring(4)}
+					td= member.school
 					td= member.name
 					td= member.written

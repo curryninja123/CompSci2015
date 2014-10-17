@@ -127,14 +127,17 @@ router.get('/admin/viewnovicescores', userz.verifyAdmin, function(req, res) {
 			if (userlist[x].member1.name) {
 				members[members.length] = userlist[x].member1;
 				members[members.length - 1].team = userlist[x].email;
+				members[members.length - 1].school = userlist[x].school;
 			}
 			if (userlist[x].member2.name) {
 				members[members.length] = userlist[x].member2;
 				members[members.length - 1].team = userlist[x].email;
+				members[members.length - 1].school = userlist[x].school;
 			}
 			if (userlist[x].member3.name) {
 				members[members.length] = userlist[x].member3;
 				members[members.length - 1].team = userlist[x].email;
+				members[members.length - 1].school = userlist[x].school;
 			}
 		}
 		members.sort(memberCompare);
@@ -153,14 +156,17 @@ router.get('/admin/viewadvancedscores', userz.verifyAdmin, function(req, res) {
 			if (userlist[x].member1.name) {
 				members[members.length] = userlist[x].member1;
 				members[members.length - 1].team = userlist[x].email;
+				members[members.length - 1].school = userlist[x].school;
 			}
 			if (userlist[x].member2.name) {
 				members[members.length] = userlist[x].member2;
 				members[members.length - 1].team = userlist[x].email;
+				members[members.length - 1].school = userlist[x].school;
 			}
 			if (userlist[x].member3.name) {
 				members[members.length] = userlist[x].member3;
 				members[members.length - 1].team = userlist[x].email;
+				members[members.length - 1].school = userlist[x].school;
 			}
 		}
 		members.sort(memberCompare);
