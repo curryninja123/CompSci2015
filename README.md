@@ -1,4 +1,4 @@
-CompSci2014
+CompSci2015
 ===========
 
 This is a website to run our computer science competition.
